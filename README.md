@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @SparkyDesigns
-- 👀 I’m interested in video games developer and software development
+- 👀 I’m interested in becoming a video game developer and software development
 - 🌱 I’m currently learning to be a Full Stack Developer
 - 💞️ I’m looking to collaborate on any project that will help build up my skills
 - 📫 How to reach me is by email: srsparks15@gmail.com
