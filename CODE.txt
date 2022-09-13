@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <title>Simple Interest Calculator</title>
+    </head>
+    <body>
+      <div class="maindiv">
+        <h1>Simple Interest Calculator</h1>
+        <form action="" id="mainform">
+
+          <label for="principal" value="principal">Amount</label>
+            <input type="number" id="principal">
+         
+          <br><br>  
+
+           <label for="rate" value="rate">Interest Rate</label>
+            <input type="range" id="rate" min="1" max="20" value="10.25" step="0.25" onchange="return updateRate()">
+            <span id="rate_val">10.25%</span>
+
+          <br><br>       
+
+           <label for="years" value="years">No. of Years</label>
+            <select id="years">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select> 
+            <br><br>
+           <button onclick="return compute()">Compute Interest</button>
+           <br><br>
+        </form>
+            <span id="result" class="result">
+                If you deposit <mark><label id="amount"></label>,</mark><br/>
+                at an interest rate of <mark><label id="rateOfInterest"></label></mark>.<br/>
+                You will receive an amount of <mark><label id="interest"></label></mark>,<br/>
+                in the year <mark><label id="year"></label></mark>
+            </span>
+            <br>
+        <footer>
+            &#169; Everyone Can Get Rich<br>
+            This Calculator belongs to Jelan
+        </footer>
+      </div> 
+    </body>
+</html>
+
+
+
+
+body {background-color:black;
+	color:white;
+	font:arial;
+}
+
+h1 {color:grey;
+	font:verdana;
+	padding: 0px 10px;
+}
+
+.maindiv { background-color:white;
+	color:black;
+	width:400px;
+	padding:20px;
+	border-radius:25px;
+	margin:auto;
+	line-height:normal;
+}
+
+#mainform { margin:auto; 
+	line-height:30px;
+	display:table;
+}
+
+#mainform p { display: table-row; 
+}
+
+#mainform label { display:table-cell;
+}
+
+.result { 
+    display:none;
+    padding-left:50px;
+}
+
+
+footer {padding: 0px 10px;
+	padding-top:10px;
+}
+
+
+function showMessage() {
+	document.getElementById("result").style.display = "block";
+}
+
+function compute()
+{
+    var principal = document.getElementById("principal").value;
+    var rate = document.getElementById("rate").value;
+    var years = document.getElementById("years").value;
+    var interest = principal * years * rate / 100;
+    var year = new Date().getFullYear()+parseInt(years);
+
+    document.getElementById("amount").innerHTML = ""+principal;
+	document.getElementById("rateOfInterest").innerHTML = ""+rate;
+	document.getElementById("interest").innerHTML = ""+interest;
+	document.getElementById("year").innerHTML = ""+year
+
+    if(principal <= 0 || isNaN(principal)) {
+        alert("Please enter a positive number");
+        document.getElementById("principal").focus();
+        return false;
+    }
+
+    showMessage();
+
+    return false;
+}
+
+function updateRate() {
+
+    var rateval = document.getElementById("rate").value;
+    document.getElementById("rate_val").innerText = rateval + "%";
+}
